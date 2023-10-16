@@ -1,0 +1,43 @@
+<!-- server.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/styles/add-products.css">    <title>Toy Store</title>
+</head>
+
+<body>
+    <div class="content">
+        <h1>Add products</h1>
+
+        <!-- (1): CREATE Task -->
+
+        </form>
+        <div class="content">
+            <form action="/add-product" method="POST" enctype="multipart/form-data" onsubmit="checkFormInput();">
+                <input type="text" placeholder="Product Name" name="product_name" required />
+                <textarea placeholder="Product Description" name="description" required></textarea>
+                <input type="number" placeholder="Price" name="price" step="0.01" required/>
+                <input type="number" placeholder="Quantity" name="quantity" required/>
+                <input type="file" name="image" accept="image/*" required>
+                <select name="category_id">
+                    <option value="1">Category 1</option>
+                    <option value="2">Category 2</option>
+                    <option value="3">Category 3</option>
+                    <option value="4">Category 4</option>
+                  </select>
+                  <select name="status">
+                    <option value="0">Active</option>
+                    <option value="1">Inactive</option>
+                  </select>
+                  <button type="submit">Add Product</button>
+                </form>
+              </div>
+                
+            </form>
+    </div>
+
+</body>
+<script src="/main.js"></script>
+</html>

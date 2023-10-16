@@ -1,0 +1,93 @@
+/* Add-product.css */
+
+/* Container styles */
+.content {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  /* Heading styles */
+  h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form styles */
+  form {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  textarea,
+  input[type="number"],
+  select {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[type="file"] {
+    margin-bottom: 10px;
+  }
+  
+  /* Button styles */
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Error message styles */
+  .error {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  /* Success message styles */
+  .success {
+    color: green;
+    margin-top: 5px;
+  }
+  
+  /* File input label styles */
+  .file-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Image preview styles */
+  .image-preview {
+    margin-bottom: 10px;
+  }
+  
+  .image-preview img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 10px;
+  }
+  
+  /* Category select styles */
+  select[name="category_id"],
+  select[name="status"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Responsive styles for smaller screens */
+  @media screen and (max-width: 600px) {
+    .content {
+      width: 100%;
+    }
+  }

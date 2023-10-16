@@ -1,0 +1,79 @@
+/* Add your CSS for the notification container and styles here */
+.notification {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.notification.show {
+  display: block;
+}
+
+/* Add a container element to wrap the sidebar and content sections */
+.container {
+  margin: 0 auto;
+  width: 960px;
+}
+
+/* Set the width of the sidebar and content sections */
+.sidebar {
+  width: 200px;
+  float: left;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.content {
+  width: 760px;
+  float: left;
+  padding: 10px;
+}
+
+/* Add a border to the product list table */
+.product-list {
+  border: 1px solid #ccc;
+}
+
+/* Change the font family and size */
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+/* Add some colors to the page */
+.logo-link {
+  color: #4CAF50;
+}
+
+.product-list th,
+.product-list td {
+  padding: 10px;
+}
+
+.product-list th {
+  background-color: #ccc;
+}
+
+.product-list tr:hover {
+  background-color: #f5f5f5;
+}
+
+.product-list a {
+  color: #4CAF50;
+}
+
+.product-list a:hover {
+  color: #000;
+}
+
+/* Fix image size */
+.product-list img {
+  max-width: 300px;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>List Products</title><link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <div class="content">
+      <h1>List Products</h1>
+      <h2><a href="/add-product">Add product</a></h2>
+      <table class="product-list">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Staus</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var i = 0; i < products.length; i++) { %>
+            <tr class="product">
+              <td>
+                <img src="/images/<%= products[i].image %>" alt="<%= products[i].product_name %>" />
+              </td>
+              <td><%= products[i].product_name %></td>
+              <td><%= products[i].description %></td>
+              <td>$<%= products[i].price %></td>
+              <td><%= products[i].quantity %></td>
+              <td><%= products[i].category_id %></td>
+              <td><%= products[i].status %></td>
+              <td>
+                <a href="/edit-products/<%= products[i]._id %>">Edit</a>
+                <a href="/delete-product/<%= products[i]._id %>">Delete</a>
+              </td>
+            </tr>
+          <% } %>
+          
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script src="/main.js"></script>
+</html>
