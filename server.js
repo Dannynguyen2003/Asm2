@@ -89,68 +89,24 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         });
     });
 
-    app.get("/edit-products/:_id", (req, res) => {
-      const productId = req.params._id;
-      fetchProductById(productId).then((product) => {
-        if (!product) {
-          return res.status(404).send("Product not found");
-        }
-        res.render("edit-products.ejs", { product: product }); // Pass the product object to the template
-      });
-    });
-    
-    app.post("/update-product/:_id", async (req, res) => {
-      const productId = req.params._id;
-      const { product_name, description, price, quantity, category_id, status } = req.body;
-    
-      if (!product_name || !description || isNaN(price) || isNaN(quantity) || !category_id || !status) {
-        const errorMessage = "Invalid input data";
-        res.render("edit-products.ejs", { errorMessage });
-        return;
-      }
-    
-      const updatedProduct = {
-        product_name,
-        description,
-        price: parseFloat(price),
-        quantity: parseInt(quantity),
-        category_id: parseInt(category_id),
-        status: parseInt(status),
-      };
-    
-      if (req.file) {
-        updatedProduct.image = req.file.filename;
-      }
-    
-      try {
-        await productsCollection.updateOne(
-          { _id: ObjectID.createFromHexString(productId) },
-          { $set: updatedProduct }
-        );
-    
-        console.log("Product updated successfully");
-        res.redirect("/");
-      } catch (error) {
-        console.error("Error updating product:", error);
-        res.status(500).send("Error updating product");
-      }
-    });
-    
-
-    app.get("/delete-product/:_id", (req, res) => {
-      const productId = req.params._id;
+    app.get("/search-products", (req, res) => {
+      const searchQuery = req.query.q;
       productsCollection
-        .deleteOne({ _id: new ObjectID(productId) })
-        .then((result) => {
-          console.log("Product deleted successfully");
-          res.redirect("/");
+        .find({
+          $or: [
+            { product_name: { $regex: new RegExp(searchQuery, "i") } },
+            { product_description: { $regex: new RegExp(searchQuery, "i") } },
+          ],
+        })
+        .toArray()
+        .then((results) => {
+          res.render("index.ejs", { products: results, searchQuery });
         })
         .catch((error) => {
-          console.error("Error deleting product:", error);
-          res.status(500).send("Error deleting product");
+          console.error("Not found:", error);
+          res.status(500).send("Error when finding products");
         });
     });
-
 
     app.listen(3000, function () {
       console.log("Listening on port 3000");

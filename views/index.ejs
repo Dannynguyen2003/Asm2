@@ -9,6 +9,12 @@
       <h1>List Products</h1>
       <h2><a href="/add-product">Add product</a></h2>
       <table class="product-list">
+      <div class="search-bar">
+          <form id="search-form" action="/search-products" method="get">
+              <input type="text" id="search-input" name="q" placeholder="Search for products">
+              <button type="submit">Search</button>
+          </form>
+      </div>
         <thead>
           <tr>
             <th>Image</th>
@@ -34,8 +40,6 @@
               <td><%= products[i].category_id %></td>
               <td><%= products[i].status %></td>
               <td>
-                <a href="/edit-products/<%= products[i]._id %>">Edit</a>
-                <a href="/delete-product/<%= products[i]._id %>">Delete</a>
               </td>
             </tr>
           <% } %>
